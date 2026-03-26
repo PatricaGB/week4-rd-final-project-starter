@@ -20,9 +20,31 @@ p {
 }
 
 img{
-  width:100%;
+    width: 100%;
+    height: auto;;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móviles */
+  gap: 10px; /* Espacio entre filas y columnas */
+  padding: 10px;
+}
+
+figure {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* radio inicial */
+}
+
+figure img {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: auto;
+}
 
 p{
   text-align:center;
@@ -41,6 +63,49 @@ div{
   margin: 5px;
   padding: 2px;
 }
+
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  }
+
+  figure {
+    border-radius: 50%; /* forma circular */
+  }
+
+  figure:last-child {
+    grid-column: span 2; /* última figura ocupa ambas columnas */
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  figure {
+    border-radius: 0; /* eliminar radio del borde */
+  }
+
+  figure:nth-child(3n) {
+    grid-column: span 2; /* cada tercera figura ocupa dos columnas */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto; /* eliminar desplazamiento suave */
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222; /* fondo oscuro */
+    color: #ffeb3b; /* texto claro amarillento */
+  }
+}
+
 
 
 
